@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="">Form demo</h1>
+        <hr>
+
+        <form class="form text-center" action="">
+            <select class="form-select" name="form1" id="form1">
+                <option value="A" class="ok">A</option>
+                <option value="B" class="ok">B</option>
+                <option value="C" class="ok">C</option>
+                <option value="NONE" class="no">NonSelect</option>
+            </select>
+            <div class="my-3"></div>
+            <select class="form-select" name="form2" id="form2">
+                <option value="a" class="ok">a</option>
+                <option value="b" class="ok">b</option>
+                <option value="c" class="ok">c</option>
+                <option value="none" class="no">none</option>
+            </select>
+            <div></div>
+            <input class="mt-4" type="submit">
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // from1が選択されたら実行
+            $('select[name="form1"]').change(function () {
+
+                // 選択された値を取得
+                var selectValue = $('select[name="form1"] option:selected').attr("class");
+                console.log(selectValue);
+
+                // Form2の要素数を取得
+                var count = $('select[name="form2"]').children().length;
+
+                // form2の表示・非表示
+                for (var i = 0; i < count; i++) {
+                    var value = $('select[name="form2"] option:eq(' + i + ')');
+
+                    if (value.attr("class") === selectValue) {
+                        value.show();
+                    } else {
+                        value.hide();
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
